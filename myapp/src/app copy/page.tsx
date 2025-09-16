@@ -1,17 +1,13 @@
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import Layout from "@/components/layout";
 
 export default function HomePage() {
   return (
-    <Layout>
     <div>
-      
-      <h1 className="text-3xl font-bold text-blue-600">Home Page</h1>
+      <Navbar />
+      <h1>Home Page</h1>
       <p>Манай вэбэд тавтай морилно уу!</p>
     </div>
-    </Layout>
   );
 }
-
-
 
