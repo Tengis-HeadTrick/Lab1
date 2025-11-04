@@ -1,6 +1,7 @@
 "use client";
 
 
+import Layout from "@/components/layout";
 import { useEffect, useState } from "react";
 
 interface Todo {
@@ -66,6 +67,7 @@ export default function TodoList() {
   });
 
   return (
+    <Layout>
     <div className="p-8 max-w-xl mx-auto">
       <h1 className="text-3xl font-bold mb-4 text-center">Todo List</h1>
 
@@ -148,6 +150,6 @@ export default function TodoList() {
           </li>
         ))}
       </ul>
-    </div>
+    </div></Layout>
   );
 }
