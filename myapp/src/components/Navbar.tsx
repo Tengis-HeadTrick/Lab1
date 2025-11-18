@@ -28,6 +28,7 @@ export default function Navbar() {
         <Link href="/gallery">Gallery</Link>
         <Link href="/calc">Calculator</Link>
         <Link href="/todo">Todo</Link>
+        <Link href="/weather">Weather</Link>
       </div>
 
       {!user ? (
