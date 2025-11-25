@@ -9,6 +9,8 @@ export default function LoginForm() {
   const [error, setError] = useState("");
   const router = useRouter();
 
+  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -55,7 +57,7 @@ export default function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
           className="border p-2 rounded"
         />
-
+        
         {error && <span className="text-red-500 text-sm">{error}</span>}
 
         <button

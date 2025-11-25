@@ -1,17 +1,19 @@
-import Navbar from "@/components/Navbar";
-import Layout from "@/components/layout";
+"use client";
 
-export default function HomePage() {
-  return (
-    <Layout>
-    <div>
-      
-      <h1 className="text-3xl font-bold text-blue-600">Home Page</h1>
-      <p>Манай вэбэд тавтай морилно уу!</p>
-    </div>
-    </Layout>
-  );
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import LoginForm from "./form/login/page";   
+
+export default function LoginPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("loggedInUser");
+
+    if (loggedIn) {
+      router.push("/");
+    }
+  }, [router]);
+
+  return <LoginForm />;
 }
-
-
-
