@@ -2,7 +2,6 @@
 
 
 import { useState } from "react"; 
-import Layout from "@/components/layout";
 export default function Counter() {
 
   const [count, setCount] = useState(0);
@@ -27,7 +26,6 @@ export default function Counter() {
   const divide = () => setCount(Math.floor(count / 2));
 
   return (
-    <Layout>
     <div className="flex flex-col items-center gap-4 mt-10">
       
       <h1 className="text-3xl font-bold">Count: {count}</h1>
@@ -69,6 +67,6 @@ export default function Counter() {
           ÷2
         </button>
       </div>
-    </div></Layout>
+    </div>
   );
 }

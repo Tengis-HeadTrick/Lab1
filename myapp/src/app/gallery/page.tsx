@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import { photos } from "@/app/data/photos";
-import Layout from "@/components/layout";
+
 
 export default function GalleryPage() {
   return (
-    <Layout>
+   
       <div className="min-h-screen bg-white-100 py-10">
         <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
           Gallery
@@ -37,6 +37,6 @@ export default function GalleryPage() {
           ))}
         </div>
       </div>
-    </Layout>
+   
   );
 }

@@ -2,18 +2,23 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import LoginForm from "./form/login/page";   
 
-export default function LoginPage() {
+export default function HomePage() {
   const router = useRouter();
 
   useEffect(() => {
-    const loggedIn = localStorage.getItem("loggedInUser");
+    const user = localStorage.getItem("loggedInUser");
 
-    if (loggedIn) {
-      router.push("/");
+    // Нэвтрээгүй → Login руу шилжүүлнэ
+    if (!user) {
+      router.push("/form/login");
     }
-  }, [router]);
+  }, []);
 
-  return <LoginForm />;
+  return (
+    <div className="p-6 space-y-4">
+      <h1 className="text-3xl font-bold text-blue-600">Home Page</h1>
+      <p>Манай вэбэд тавтай морилно уу!</p>
+    </div>
+  );
 }

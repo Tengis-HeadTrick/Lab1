@@ -1,10 +1,10 @@
-import Layout from "@/components/layout";
+
  import Link from "next/link";
   import { blogs } from "@/app/data/blog";
  
   export default function BlogPage() {
   return (
-<Layout>
+
  <div className="p-6">
  <h1 className="text-2xl font-bold mb-4">Blog List</h1>
  <ul className="space-y-3">
@@ -22,7 +22,7 @@ import Layout from "@/components/layout";
  ))}
  </ul>
  </div>
-</Layout>
+
  
 
   );

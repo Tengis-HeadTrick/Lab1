@@ -1,6 +1,6 @@
 "use client";
 
-import Layout from "@/components/layout";
+
 import { useState } from "react";
 
 export default function WeatherPage() {
@@ -48,7 +48,7 @@ export default function WeatherPage() {
   };
 
   return (
-    <Layout>
+ 
     <div className="flex flex-col items-center p-6 bg-white-200">
       <h1 className="text-3xl font-bold mb-4">Цаг агаар</h1>
 
@@ -81,6 +81,6 @@ export default function WeatherPage() {
           <p className="capitalize">{weather.weather?.[0].description}</p>
         </div>
       )}
-    </div></Layout>
+    </div>
   );
 }

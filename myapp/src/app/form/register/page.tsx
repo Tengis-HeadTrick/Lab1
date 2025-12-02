@@ -1,86 +1,70 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-export default function RegisterForm() {
+export default function RegisterPage() {
+  const router = useRouter();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    const logged = localStorage.getItem("loggedInUser");
+    if (logged) {
+      router.push("/"); // Нэвтэрсэн бол Home руу
+    }
+  }, []);
+
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!name || !email || !password || !confirm) {
+    if (!name || !email || !password) {
       setError("Бүх талбарыг бөглөнө үү!");
-    } else if (!email.includes("@")) {
-      setError("Имэйл буруу байна!");
-    } else if (password.length < 6) {
-      setError("Нууц үг хамгийн багадаа 6 тэмдэгт байх ёстой!");
-    } else if (password !== confirm) {
-      setError("Нууц үг таарахгүй байна!");
-    } else {
-      setError("");
-      const userData = { name, email, password };
-      localStorage.setItem("registeredUser", JSON.stringify(userData));
-      alert(`Бүртгэл амжилттай!\nТавтай морил, ${name}!`);
-      router.push("/"); // → Home руу автоматаар шилжүүлэх
+      return;
     }
+
+    const user = { name, email, password };
+    localStorage.setItem("registeredUser", JSON.stringify(user));
+
+    router.push("/form/login"); // Бүртгэл амжилттай → Login руу
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-3 w-80 bg-white p-6 rounded-2xl shadow-md"
-      >
-        <h2 className="text-xl font-semibold text-center mb-2">
-          Register Form
-        </h2>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
+      <form className="bg-white shadow-lg rounded-xl p-6 w-full max-w-sm" onSubmit={handleRegister}>
+
+        <h2 className="text-2xl font-bold mb-4 text-center">Бүртгүүлэх</h2>
+
+        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
         <input
           type="text"
           placeholder="Нэр"
-          value={name}
+          className="border p-2 rounded w-full mb-3"
           onChange={(e) => setName(e.target.value)}
-          className="border p-2 rounded"
         />
 
         <input
           type="email"
           placeholder="Имэйл"
-          value={email}
+          className="border p-2 rounded w-full mb-3"
           onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 rounded"
         />
 
         <input
           type="password"
           placeholder="Нууц үг"
-          value={password}
+          className="border p-2 rounded w-full mb-3"
           onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 rounded"
         />
 
-        <input
-          type="password"
-          placeholder="Нууц үг баталгаажуулах"
-          value={confirm}
-          onChange={(e) => setConfirm(e.target.value)}
-          className="border p-2 rounded"
-        />
-
-        {error && <span className="text-red-500 text-sm">{error}</span>}
-
-        <button
-          type="submit"
-          className="bg-green-500 text-white p-2 rounded hover:bg-green-600"
-        >
+        <button className="bg-green-600 text-white w-full p-2 rounded hover:bg-green-700">
           Бүртгүүлэх
         </button>
+
       </form>
     </div>
   );
