@@ -37,7 +37,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-white-100 p-6">
       <form className="bg-white shadow-lg rounded-xl p-6 w-full max-w-sm" onSubmit={handleLogin}>
         
         <h2 className="text-2xl font-bold mb-4 text-center">Нэвтрэх</h2>
